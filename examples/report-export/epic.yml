@@ -1,0 +1,97 @@
+# This register as it reads on F2's branch (015-csv-download). On main, F2
+# still reads `planned`: a cut is recorded on the feature's branch and reaches
+# the target when the feature is integrated.
+epic:   report-export
+title:  Scheduled report export
+decision_prefix: EXPORT         # D-EXPORT-007; declared, never derived
+status: in-flight
+target: main                    # the operator's choice; plan asked, nothing assumed
+
+milestones:
+  M1: { means: "A user can download any report they can already see, as CSV, on demand", features: [F1, F2] }
+  M2: { means: "A user can have a report emailed to them on a schedule, and stop it", features: [F3, F4] }
+
+features:
+  F1:
+    title:     Export permission check
+    slug:      export-access
+    concern:   "An export contains exactly the rows the requesting user can see on screen"
+    milestone: M1
+    status:    integrated
+    status_note: |
+      Spec signed off 2026-03-02 by the product owner.
+      Gate observed 2026-03-04: export-visibility suite, 14 cases, all green.
+      PROVEN FALSIFIABLE: replaced the visibility filter with `return true`;
+      9 of 14 cases went red.
+      Epic review 2026-03-05: 2 findings, 0 open.
+      Integrated 2026-03-05, merge 4f1c2ab.
+      OWED: rows shared through a team link are not covered; raised as a
+      question on EF1, not yet answered.
+    feature:   specs/014-export-access
+    branch:    014-export-access
+    gate:      "A user with access to 3 of 10 projects exports a report and the file holds rows from those 3 projects only; the same request with the filter disabled holds all 10"
+
+  F2:
+    title:     On-demand CSV download
+    slug:      csv-download
+    concern:   "A user presses Export on a report and receives a CSV of it"
+    milestone: M1
+    status:    cut
+    status_note: |
+      BUILDING UNSIGNED: the product owner decided 2026-03-06 to proceed
+      without spec sign-off, because the spec only adds a button over F1.
+      Sign-off owed before integration.
+    feature:   specs/015-csv-download
+    branch:    015-csv-download
+    gate:      "A 50,000-row report downloads as a CSV whose row count and column headers match the on-screen report; a report the user cannot see returns no file"
+
+  F3:
+    title:     Scheduled delivery
+    slug:      schedules
+    concern:   "A user sets a report to be emailed weekly, and it arrives"
+    milestone: M2
+    status:    planned
+    feature:   ~
+    branch:    ~
+    gate:      "A weekly schedule created on Monday delivers on the next Monday and not before; a schedule whose owner lost access to the report delivers nothing"
+
+  F4:
+    title:     Unsubscribe and expiry
+    slug:      schedules
+    concern:   "A recipient can stop a scheduled report from the email itself, and abandoned schedules stop on their own"
+    milestone: M2
+    status:    planned
+    feature:   ~
+    branch:    ~
+    gate:      "The unsubscribe link in a delivered email stops the next delivery without signing in; a schedule whose owner has been deactivated stops within one cycle"
+
+edges:
+  - from: F1
+    to:   F2
+    because: >-
+      F2's download handler calls F1's visibility filter. Built first, F2 would
+      ship an export with no filter at all, and a download of every row in the
+      system is a data leak, not a missing feature.
+  - from: F1
+    to:   F3
+    because: >-
+      A scheduled export runs with nobody signed in. Without F1's check bound to
+      the schedule's owner, the job has no user to filter for and exports
+      everything.
+  - from: F3
+    to:   F4
+    because: >-
+      Shipping schedules without a way to stop them sends mail nobody can opt out
+      of. F4 is F3's alarm, and is kept in the same milestone so it cannot be
+      dropped.
+
+external:
+  work:
+    - ref:  fix/report-date-format
+      why:  "Landed on main during M1; changes the date column F2 exports. Covered by F2's review."
+  edges:
+    - with:      the reporting-redesign epic
+      relation:  after
+      because: >-
+        The redesign renames report columns. Landing it before F2 would ship
+        CSV headers that change again under every user’s import.

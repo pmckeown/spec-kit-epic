@@ -1,0 +1,35 @@
+# Epic extension configuration
+# Copy to .specify/extensions/epic/epic-config.yml to change the defaults.
+# Without that file, and for any key it leaves out, the defaults shown here apply.
+
+review:
+  # Who reviews. `model` is whatever identifier your agent accepts for choosing
+  # a model for a separate agent or session; leave it empty to use the current
+  # session's model. Attackers do the expensive work (writing and running
+  # attacks); the cross-feature reviewer mostly reads.
+  reviewers:
+    attacker:
+      model: ""
+    cross_feature:
+      model: ""
+
+  # With `review all`, one attacker per this many features, grouped by the
+  # definitions they share.
+  features_per_attacker: 3
+
+  # Re-attack fixes until a round finds nothing new at high or medium severity,
+  # or this many rounds have run.
+  reattack:
+    max_rounds: 3
+
+  # The highest severity a reviewer may accept without the owner. Above this,
+  # acceptance is the owner's call. One of: none, low, medium.
+  accept_max_severity: low
+
+close:
+  # The default order of close's steps. Remove a step to skip it by default
+  # (close still records it as SKIPPED), or reorder. This default is the
+  # economical order, walking the acceptance first. The thorough order reviews
+  # first: [review, acceptance, milestones, checks, external, unpushed]
+  # `checks` always runs after the last step that changes code.
+  steps: [acceptance, review, milestones, checks, external, unpushed]

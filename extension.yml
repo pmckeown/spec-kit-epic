@@ -1,0 +1,63 @@
+schema_version: "1.0"
+
+extension:
+  id: epic
+  name: "Epic"
+  version: "0.1.0"
+  description: "Work too big for one feature: the facts, decisions and gates that outlive any single feature, and the register that says which feature depends on what"
+  author: Paul McKeown
+  repository: https://github.com/pmckeown/spec-kit-epic
+  license: MIT
+
+requires:
+  speckit_version: ">=0.12.9.dev0,<0.13.0"   # tested on 0.12.9; widen once tested
+  tools:
+    - name: git
+      required: true
+
+provides:
+  commands:
+    - name: speckit.epic.specify
+      file: commands/speckit.epic.specify.md
+      description: "Write the epic spec: the re-grounded picture of what exists, the boundary, the facts that span features, and the decisions (especially the refusals) no feature may re-derive"
+    - name: speckit.epic.plan
+      file: commands/speckit.epic.plan.md
+      description: "Decompose an epic into features with gates, dependency edges and milestones, and write the epic register"
+    - name: speckit.epic.cut
+      file: commands/speckit.epic.cut.md
+      description: "Cut the next feature out of an epic: branch it from the integration target, hand to specify, seed its promoted decisions, and update the register, stopping at the spec"
+    - name: speckit.epic.review
+      file: commands/speckit.epic.review.md
+      description: "Review implemented work against the epic, not its own spec: epic changes not propagated, drift from what was promised, refusals reintroduced, shared definitions touched by several features, independent attack and re-attack of guards"
+    - name: speckit.epic.close
+      file: commands/speckit.epic.close.md
+      description: "Close an epic: review the whole epic, walk the acceptance and milestones, run the project's checks on the target after the fixes, settle external edges, and bring the register to ready or closed"
+
+  config:
+    - name: "epic-config.yml"
+      template: "config-template.yml"
+      description: "Reviewer models, review fan-out and re-attack limits, and the default order of close's steps"
+      required: false
+
+# No hooks, deliberately. The obvious one (before_specify, loading an epic's
+# spanning facts and promoted decisions) is not registered because
+# speckit.epic.cut already writes those pointers into the feature. A hook would
+# be a second, untested mechanism for a job already done.
+
+tags:
+  - "epic"
+  - "planning"
+  - "decisions"
+  - "workflow"
+
+config:
+  defaults:
+    review:
+      reviewers:
+        attacker: { model: "" }
+        cross_feature: { model: "" }
+      features_per_attacker: 3
+      reattack: { max_rounds: 3 }
+      accept_max_severity: low
+    close:
+      steps: [acceptance, review, milestones, checks, external, unpushed]

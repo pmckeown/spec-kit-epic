@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+- "What comes next" in `FORMATS.md` no longer names `cut` for a feature an
+  `open` ledger entry touches, which `cut` refuses since 0.1.1. A new row names
+  the owner's decision as the next step.
+
 ## 0.1.1
 
 - `cut` refuses a feature while an `open` ledger entry touches it (refusal 10),

@@ -19,13 +19,32 @@ steps in one session where it does not, saying so in its report.
 
 ## Install
 
+Install a release by passing its source archive to `--from`:
+
 ```sh
-specify extension add --dev /path/to/spec-kit-epic     # from a local checkout
+specify extension add --from https://github.com/pmckeown/spec-kit-epic/archive/refs/tags/v0.1.2.zip
 ```
 
-Or download a release archive and pass it to `specify extension add --from
-<url>`. The extension installs to `.specify/extensions/epic/`, and its commands
-are registered for every agent integration in the project.
+[Releases](https://github.com/pmckeown/spec-kit-epic/releases) lists every
+version; change the tag in the URL to pick another. The extension is not yet in
+a Spec Kit catalogue, so `specify` asks you to confirm the source before it
+installs.
+
+The extension installs to `.specify/extensions/epic/`, and its commands are
+registered for every agent integration in the project.
+
+To upgrade, remove the installed version and add the new one:
+
+```sh
+specify extension remove epic
+specify extension add --from https://github.com/pmckeown/spec-kit-epic/archive/refs/tags/<tag>.zip
+```
+
+Commit the upgrade before running `cut`: it refuses uncommitted changes outside
+`epics/` and `specs/`.
+
+To work on the extension itself, install from a local checkout with
+`specify extension add --dev /path/to/spec-kit-epic`.
 
 ## Purpose
 

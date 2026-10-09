@@ -228,7 +228,8 @@ so the commands agree:
 | Review findings open, routed fix | fix (on the feature's branch, or at close a branch from `target:`), then re-attack |
 | A feature reviewed with `0 open` | integrate it (convention) |
 | Anything in a ledger `owes:` | bring the named spec, pointer or `epic.md` section current |
-| A feature `planned` with every incoming edge `integrated` | `speckit.epic.cut` |
+| A feature `planned` with every incoming edge `integrated`, and no `open` ledger entry touching it | `speckit.epic.cut` |
+| A feature `planned` with an `open` ledger entry touching it | the owner decides each `open` entry, as a new entry that supersedes it |
 | Every feature `integrated` | `speckit.epic.close` |
 | Acceptance walk failed | fix, then re-walk the failed steps |
 | The epic `ready` | the operator: each `OWED:` in the epic's `status_note` (push, onward merge, owner's calls), then `status: closed` by hand |

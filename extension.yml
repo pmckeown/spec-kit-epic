@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: epic
   name: "Epic"
-  version: "0.1.1"
+  version: "0.1.2"
   description: "Work too big for one feature: the facts, decisions and gates that outlive any single feature, and the register that says which feature depends on what"
   author: Paul McKeown
   repository: https://github.com/pmckeown/spec-kit-epic

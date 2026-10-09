@@ -7,8 +7,8 @@ one feature.
 |---|---|
 | Extension id | `epic` |
 | Commands | `speckit.epic.specify`, `speckit.epic.plan`, `speckit.epic.cut`, `speckit.epic.review`, `speckit.epic.close` |
-| Requires | Spec Kit 0.12.x (tested on 0.12.9), git |
-| Status | 0.1.2 |
+| Requires | Spec Kit 0.12.9 to 1.1.x (tested on 0.12.9 and 1.1.2), git |
+| Status | 0.1.3 |
 
 Command ids are written with dots and rendered for your agent with its own
 separator (`speckit.epic.specify` becomes `/speckit.epic.specify` or
@@ -22,7 +22,7 @@ steps in one session where it does not, saying so in its report.
 Install a release by passing its source archive to `--from`:
 
 ```sh
-specify extension add --from https://github.com/pmckeown/spec-kit-epic/archive/refs/tags/v0.1.2.zip
+specify extension add --from https://github.com/pmckeown/spec-kit-epic/archive/refs/tags/v0.1.3.zip
 ```
 
 [Releases](https://github.com/pmckeown/spec-kit-epic/releases) lists every
@@ -369,14 +369,15 @@ calls, set `status: closed`, and remove the `OWED:` lines now done.
 ### Configuration
 
 Nothing needs configuring: every command runs on its defaults. To change them,
-copy the installed template to the config file and edit it:
+edit `.specify/extensions/epic/epic-config.yml`. Spec Kit 1.x creates it from
+the template on install. Spec Kit 0.12 installs only the template, so if the
+file is missing, copy it:
 
 ```sh
 cp .specify/extensions/epic/config-template.yml .specify/extensions/epic/epic-config.yml
 ```
 
-(Spec Kit 0.12 installs the template but does not create the config file from
-it.) Every key is optional:
+Every key is optional:
 
 - `review.reviewers.<role>.model`: the model for each reviewer role (attacker,
   cross-feature), in whatever form your agent accepts. Empty means the current

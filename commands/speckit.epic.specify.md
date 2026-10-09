@@ -35,7 +35,8 @@ document for how it was settled.
 
 ## Refuse before you start
 
-Check these first and stop if any holds. Each names what to do instead.
+Check every item below and report each one that holds, then stop. Each names
+what to do instead.
 
 1. **The goal decomposes into one feature.** An epic is warranted by facts,
    decisions or gates that outlive a single feature, not by size, effort, or how

@@ -35,6 +35,9 @@ if it exists; otherwise use the defaults stated here.
 
 ## Refuse before you start
 
+Check every item below and report each one that holds, then stop. Where an item
+names a way to continue, follow it instead.
+
 1. **No `epic.yml` with `features:`.** Name `__SPECKIT_COMMAND_EPIC_PLAN__`.
 2. **The feature is `planned`.** There is nothing to review. Name
    `__SPECKIT_COMMAND_EPIC_CUT__`.

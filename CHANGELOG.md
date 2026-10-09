@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.3
+
+- Supports Spec Kit 1.x: `speckit_version` is now `>=0.12.9.dev0,<1.2.0`,
+  tested on 0.12.9 and 1.1.2.
+- Every command checks all its refusals and reports each one that holds, rather
+  than stopping at the first. A refusal that names a way to continue is
+  followed instead.
+- `cut` refusal 7 allows a gate that grounds its own premise: an
+  `[UNGROUNDED]` mark settled by the feature's own gate, when the gate states
+  the claim as something it proves.
+- The README's configuration note covers Spec Kit 1.x, which creates
+  `epic-config.yml` on install.
+- Shorter manifest description, for the catalogue.
+
 ## 0.1.2
 
 - "What comes next" in `FORMATS.md` no longer names `cut` for a feature an

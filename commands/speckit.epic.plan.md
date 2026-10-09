@@ -26,6 +26,9 @@ decision `touches:`.
 
 ## Refuse before you start
 
+Check every item below and report each one that holds, then stop. Where an item
+names a way to continue, follow it instead.
+
 1. **No `epic.md`.** Name `__SPECKIT_COMMAND_EPIC_SPECIFY__`.
 2. **No `decision_prefix` in `epic.yml`.** The ledger's ids already cite one, so
    it was settled. Find it in `decisions.md`, ask the user to confirm it, and

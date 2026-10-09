@@ -118,6 +118,10 @@ An unrecorded change is a finding against the epic, not the feature: add the
 ledger entry, with `owes:`. A feature built to the old version is a finding
 against the feature.
 
+If the feature's `status_note` has a `CUT WITH OPEN DECISIONS` line, check each
+id it names: an entry still `open` is an owner's call (step 9), and one
+superseded since is an epic change, checked as above.
+
 ### 3. Drift from what was promised
 
 Keep this short. Compare the feature's `concern` and `gate` at the cut commit

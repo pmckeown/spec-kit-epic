@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.1
+
+- `cut` refuses a feature while an `open` ledger entry touches it (refusal 10),
+  unless the owner chooses to cut anyway, recorded in the feature's
+  `status_note`. A `provisional` entry is reported, not refused.
+- `FORMATS.md` defines an `open` entry: options and a recommendation instead of
+  a rejected alternative, answered by a new entry that supersedes it.
+- `plan` rewrites `f:<slug>` tokens in prose as well as in the `Features` column
+  and `touches:` lines, and removes duplicate ids left by merged slugs.
+- `specify` checks that every "not yet" Out item has a matching `deferral`
+  entry.
+
 ## 0.1.0
 
 First public release.

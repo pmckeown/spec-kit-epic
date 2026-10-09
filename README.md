@@ -8,7 +8,7 @@ one feature.
 | Extension id | `epic` |
 | Commands | `speckit.epic.specify`, `speckit.epic.plan`, `speckit.epic.cut`, `speckit.epic.review`, `speckit.epic.close` |
 | Requires | Spec Kit 0.12.x (tested on 0.12.9), git |
-| Status | 0.1.0 |
+| Status | 0.1.1 |
 
 Command ids are written with dots and rendered for your agent with its own
 separator (`speckit.epic.specify` becomes `/speckit.epic.specify` or

@@ -155,10 +155,13 @@ Every `f:<slug>` in `epic.md` and `decisions.md` now gets its `F<n>`.
    feature(s) it became. A slug can map to one feature (the common case), to
    several (it was split: write all of them), or to none (the concern was
    dropped or folded elsewhere).
-2. **Rewrite mechanically.** Replace each `f:<slug>` token in the spanning-facts
-   table's `Features` column and in every `touches:` line with its `F<n>` (or
-   list). This is an id substitution, not an edit to a decision: the ledger stays
-   append-only in substance. Change nothing else in those lines.
+2. **Rewrite mechanically.** Replace each `f:<slug>` token with its `F<n>` (or
+   list) wherever it appears in either file: the spanning-facts table's
+   `Features` column, every `touches:` line, and the prose of `epic.md` and of
+   ledger entries. This is an id substitution, not an edit to a decision: the
+   ledger stays append-only in substance. Change nothing but the token. Where
+   two slugs became one feature, remove the duplicate id from the line
+   (`F1, F1` becomes `F1`).
 3. **A slug that maps to nothing is a finding, not a deletion.** A fact or
    decision that touched a concern no feature now owns either has a dependant you
    missed, or its row is wrong. Report it and ask; do not silently drop the

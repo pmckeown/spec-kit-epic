@@ -180,7 +180,9 @@ These rules:
 
 - **A decision with no rejected alternative is refused.** Write what was not
   chosen and why not. Without it the entry reads as an accident, and the next
-  person to reach the same fork takes the other branch in good faith.
+  person to reach the same fork takes the other branch in good faith. Only an
+  `open` entry, a question not yet decided, goes without one: list the options
+  and a recommendation instead (see `open` in `FORMATS.md`).
 - **`refusal` and `deferral` are different types.** A refusal names the proof that
   killed the alternative. A deferral names the condition that would revive it.
   Collapsing them either resurrects something disproven, or buries something that
@@ -230,7 +232,9 @@ Then check it yourself, and report the result:
 - [ ] Every current-behaviour claim carries a citation or an `[UNGROUNDED]` mark
 - [ ] Every claim about a guard was attacked, not read
 - [ ] Every Out item carries a reason
-- [ ] Every decision carries its rejected alternative
+- [ ] Every "not yet" Out item has a matching `deferral` entry
+- [ ] Every decision carries its rejected alternative, or is `open` with its
+      options and a recommendation
 - [ ] `refusal` and `deferral` are distinguished
 - [ ] Every promoted decision carries `touches:`
 - [ ] Every spanning fact has an `EF` id

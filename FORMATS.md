@@ -180,6 +180,7 @@ starting with these markers are read by the commands**, so write them exactly:
 | `OWED: <what is still to do>, <whose it is>.` | anyone | `close` sets `ready` while any is owed to the operator or owner |
 | `ACCEPTED: <finding>, <why it stays>, by <who> <date>.` | `review`, `close` | — ; done, not owed |
 | `SKIPPED: <close step>, <why>, by <who>.` | `close` | — |
+| `CUT WITH OPEN DECISIONS: <ids>, <who> decided <date>.` | `cut` | `review`: each id still `open` is an owner's call |
 
 `OWED` means still to do. `ACCEPTED` means deliberately left as it is. A
 reviewer may accept only findings at or below `review.accept_max_severity`; a
@@ -252,6 +253,21 @@ Full entry and proof: epics/<slug>/decisions.md
 ### D-<PREFIX>-009 · deferral · epic ledger
 <The alternative, named in one line.> DEFERRED UNTIL: <the reviving condition.>
 Full entry: epics/<slug>/decisions.md
+
+### D-<PREFIX>-004 · decision · epic ledger
+<What was chosen, in one line.> NOT: <the rejected alternative, in one line.>
+Full entry: epics/<slug>/decisions.md
+
+### D-<PREFIX>-011 · discovery · epic ledger
+<What was found, in one line.> FOR THIS FEATURE: <what it changes here.>
+Full entry: epics/<slug>/decisions.md
+
+### D-<PREFIX>-012 · decision · epic ledger
+OPEN: <the question, in one line.> RECOMMENDED: <the recommendation.> Decided
+by <who>, in the ledger; do not settle it in this feature.
+Full entry and options: epics/<slug>/decisions.md
 ```
+
+An `open` entry keeps its own type in the header and says `OPEN:` in the body.
 
 One line plus the pointer, never the argument.

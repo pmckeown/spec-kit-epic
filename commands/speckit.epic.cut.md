@@ -87,9 +87,12 @@ names a way to continue, follow it instead.
     would be specified around a question nobody has answered. List each entry
     with its options and recommendation, and ask the owner to decide it first,
     as a new entry that supersedes it (see `open` in `FORMATS.md`). If the owner
-    chooses to cut anyway, record that in the feature's `status_note` with who
-    decided and when, and say so in the report. A `provisional` entry does not
-    block: name it in the report.
+    chooses to cut anyway, record a `CUT WITH OPEN DECISIONS` line in the
+    feature's `status_note` in step 7 (markers in `FORMATS.md`), and say so in
+    the report. Core `specify` will then likely ask clarification questions
+    about the same points: answer each by pointing to its `open` entry, and do
+    not settle it in the spec; the decision belongs in the ledger. A
+    `provisional` entry does not block: name it in the report.
 
 ## Steps
 
@@ -117,9 +120,10 @@ and stop; do not cut it a second time.
 
 `target:` names the branch features integrate into. The name is the operator's
 decision, recorded by plan; never rename it or pick another. **If the branch
-does not exist, create it** from the tip of the current branch, provided
-`epics/<slug>/epic.yml` is committed there with the content you read. If it is
-not, stop and say which branch holds the epic. Report that you created the
+does not exist, create it** from the tip of the branch that holds the epic,
+which must be the current branch: `epics/<slug>/epic.yml` must be committed
+there with the content you read. If it is not, stop and say which branch holds
+the epic. Report that you created the
 target, and from which branch and commit.
 
 Then check the target holds the epic: `epics/<slug>/epic.yml` must exist on it
@@ -135,9 +139,11 @@ ordinary name, so that no core command has to be taught about it:
 
 - **Directory (requested):** `specs/<prefix>-<feature-slug>`, where `<prefix>`
   follows the project's `feature_numbering` in `.specify/init-options.json`
-  (sequential `NNN`, the next after the highest existing directory under
-  `specs/` on the target; or timestamp). Absent the setting, sequential. This is
-  a request: step 4 records what core `specify` actually created.
+  (sequential `NNN`, or timestamp). Absent the setting, sequential. A
+  sequential number is the next after the highest `specs/NNN-*` directory on
+  any local or remote branch, found the same way as in step 1: a feature cut in
+  parallel holds a number the target cannot see yet. This is a request: step 4
+  records what core `specify` actually created.
 - **Branch:** the directory name, with the project's branch prefix if it uses
   one. Follow what the repository's existing branches do; do not invent a
   convention.
@@ -162,6 +168,10 @@ it, as the feature description:
   instruction that `spec.md` **cites the ids and does not restate the facts**;
 - a pointer to `epics/<slug>/epic.md`, and a note that the promoted decisions
   will be in `decisions.md` beside the spec.
+
+Core `specify` writes for readers who do not need the implementation. Keep the
+`EF` and decision-id citations, state the gate as the behaviour it observes, and
+leave the mechanism the gate names (calls, adapters, storage) to core `plan`.
 
 **Do not run `__SPECKIT_COMMAND_PLAN__`. Do not run `__SPECKIT_COMMAND_TASKS__`.**
 A spec nobody has approved is not a thing to decompose: tasks written against an
@@ -193,7 +203,8 @@ whole failure mode is a feature re-deriving a refusal that looks obviously right
 at feature level.
 
 For a `deferral`, carry the **reviving condition** rather than the refusal. That
-distinction is why the ledger has two types.
+distinction is why the ledger has two types. Every type, including an `open`
+entry, has its pointer shape in `FORMATS.md`.
 
 If the project's own feature-level decision log already lives somewhere else,
 put the section there instead and say where.
@@ -212,8 +223,10 @@ The register records what happened, not what was intended, which is why this
 comes last.
 
 Commit `epics/<slug>/epic.yml` and the seeded `decisions.md` together, and
-nothing else: `spec.md` is the human's to review, and whether core output is
-committed is the project's convention, not this command's. The cut reaches
+nothing else: `spec.md` and anything else core `specify` wrote (such as its
+`checklists/`) are the human's to review, and whether core output is committed
+is the project's convention, not this command's. Leave them uncommitted and say
+so in the report. The cut reaches
 `target:` when the feature is integrated; until then, the feature branch is
 where it lives.
 
@@ -228,7 +241,7 @@ next cut that depends on this feature refuses without both.
       the report says so
 - [ ] The feature branch's parent is the target's tip
 - [ ] No `open` ledger entry touches this feature, or the owner chose to cut
-      anyway and the `status_note` says so
+      anyway and the `status_note` has a `CUT WITH OPEN DECISIONS` line
 - [ ] `__SPECKIT_COMMAND_PLAN__` and `__SPECKIT_COMMAND_TASKS__` were NOT run
 - [ ] The register's `feature:` is the directory core `specify` created
 - [ ] `spec.md` cites `EF` ids and restates no fact, and nothing else in it was changed

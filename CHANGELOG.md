@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.4
+
+- `FORMATS.md` has seeded-pointer shapes for every entry type: `decision`,
+  `discovery` and `open` join `refusal` and `deferral`.
+- New `status_note` marker `CUT WITH OPEN DECISIONS`, written when the owner
+  cuts past refusal 10; `review` treats each id still `open` as an owner's
+  call.
+- `cut` numbers a sequential feature after the highest `specs/NNN-*` on any
+  branch, not only the target, so parallel cuts do not collide.
+- `cut` creates a missing target from the branch that holds the epic, which
+  must be the current branch.
+- `cut` says that `spec.md` and core `specify`'s other output, such as
+  `checklists/`, stay uncommitted for the human's review.
+- `cut` tells core `specify` to keep `EF` and decision citations but leave the
+  gate's mechanism to core `plan`.
+- After a cut with open decisions, core `specify`'s clarification questions
+  are answered by pointing to the `open` entries, not settled in the spec.
+
 ## 0.1.3
 
 - Supports Spec Kit 1.x: `speckit_version` is now `>=0.12.9.dev0,<1.2.0`,

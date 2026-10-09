@@ -8,7 +8,7 @@ one feature.
 | Extension id | `epic` |
 | Commands | `speckit.epic.specify`, `speckit.epic.plan`, `speckit.epic.cut`, `speckit.epic.review`, `speckit.epic.close` |
 | Requires | Spec Kit 0.12.9 to 1.1.x (tested on 0.12.9 and 1.1.2), git |
-| Status | 0.1.3 |
+| Status | 0.1.4 |
 
 Command ids are written with dots and rendered for your agent with its own
 separator (`speckit.epic.specify` becomes `/speckit.epic.specify` or
@@ -22,7 +22,7 @@ steps in one session where it does not, saying so in its report.
 Install a release by passing its source archive to `--from`:
 
 ```sh
-specify extension add --from https://github.com/pmckeown/spec-kit-epic/archive/refs/tags/v0.1.3.zip
+specify extension add --from https://github.com/pmckeown/spec-kit-epic/archive/refs/tags/v0.1.4.zip
 ```
 
 [Releases](https://github.com/pmckeown/spec-kit-epic/releases) lists every

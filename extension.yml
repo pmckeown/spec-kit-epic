@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: epic
   name: "Epic"
-  version: "0.1.3"
+  version: "0.1.4"
   description: "Break work too big for one feature into features, delivered in order, with decisions that hold across them"
   author: Paul McKeown
   repository: https://github.com/pmckeown/spec-kit-epic

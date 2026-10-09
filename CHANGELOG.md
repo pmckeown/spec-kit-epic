@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.5
+
+- After a cut with open decisions, an `open` entry beyond core `specify`'s
+  clarification-marker limit is cited in the requirement text, not guessed.
+- `cut` names a feature branch the way the epic's earlier cuts were named, or
+  for the first cut, like the project's most recent feature branches.
+- The README says stale branches count towards the next feature number.
+- A seeded pointer for a `provisional` entry starts with `PROVISIONAL:`.
+- New `status_note` marker `GATE SETTLES UNGROUNDED`, written when `cut` lets a
+  gate through that settles its own `[UNGROUNDED]` premise; `review` checks the
+  mark is grounded once the gate is observed.
+
 ## 0.1.4
 
 - `FORMATS.md` has seeded-pointer shapes for every entry type: `decision`,

@@ -129,6 +129,11 @@ with what they are now, and both with what the diff does. A gate rewritten to
 match what the code does, with no ledger entry, is a finding. So is behaviour
 outside the concern: it may be right, it is still unpromised.
 
+If the `status_note` has a `GATE SETTLES UNGROUNDED` line, the gate's
+observation should have settled each mark it names. A mark still
+`[UNGROUNDED]` in `epic.md` after the gate is observed is a finding against the
+epic: ground it from the observation, or say why the gate did not settle it.
+
 ### 4. Spanning facts cited, not restated
 
 Any restatement of a spanning fact in the feature's spec, plan or tasks is a

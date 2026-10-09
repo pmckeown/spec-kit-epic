@@ -8,7 +8,7 @@ one feature.
 | Extension id | `epic` |
 | Commands | `speckit.epic.specify`, `speckit.epic.plan`, `speckit.epic.cut`, `speckit.epic.review`, `speckit.epic.close` |
 | Requires | Spec Kit 0.12.9 to 1.1.x (tested on 0.12.9 and 1.1.2), git |
-| Status | 0.1.4 |
+| Status | 0.1.5 |
 
 Command ids are written with dots and rendered for your agent with its own
 separator (`speckit.epic.specify` becomes `/speckit.epic.specify` or
@@ -22,7 +22,7 @@ steps in one session where it does not, saying so in its report.
 Install a release by passing its source archive to `--from`:
 
 ```sh
-specify extension add --from https://github.com/pmckeown/spec-kit-epic/archive/refs/tags/v0.1.4.zip
+specify extension add --from https://github.com/pmckeown/spec-kit-epic/archive/refs/tags/v0.1.5.zip
 ```
 
 [Releases](https://github.com/pmckeown/spec-kit-epic/releases) lists every
@@ -329,6 +329,10 @@ pointers into the directory core `specify` actually created, and records what
 happened in the register. If the project registers a `before_specify` hook that
 creates branches (such as the core `git` extension), `cut` lets that hook
 create the branch rather than fighting it.
+
+A sequential feature number comes after the highest `specs/NNN-*` on any local
+or remote branch, so two features cut in parallel never share one. Stale and
+throwaway branches count too, so delete them to keep numbers from climbing.
 
 It does not run core `plan` or `tasks`: planning or writing tasks against an
 unapproved spec makes it look settled. Cutting a feature and planning it are

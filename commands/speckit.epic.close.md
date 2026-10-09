@@ -32,6 +32,9 @@ exists.
 
 ## Refuse before you start
 
+Check every item below and report each one that holds, then stop. Where an item
+names a way to continue, follow it instead.
+
 1. **A feature is not `integrated`.** List each, with its status. A feature the
    operator has decided not to build is not a reason to wait: record it in the
    ledger as a `decision` (what was dropped, why, and what the epic no longer

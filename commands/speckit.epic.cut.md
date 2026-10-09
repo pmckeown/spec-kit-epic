@@ -32,6 +32,9 @@ The file shapes are in `.specify/extensions/epic/FORMATS.md`.
 
 ## Refuse before you start
 
+Check every item below and report each one that holds, then stop. Where an item
+names a way to continue, follow it instead.
+
 1. **No `epic.yml`, or one with no `features:`.** Name
    `__SPECKIT_COMMAND_EPIC_PLAN__`.
 2. **No `target:` in the register.** The integration target is the operator's
@@ -64,7 +67,10 @@ The file shapes are in `.specify/extensions/epic/FORMATS.md`.
    happens to do. Name `__SPECKIT_COMMAND_EPIC_PLAN__`.
 7. **The feature's gate depends on an `[UNGROUNDED]` claim in `epic.md`.**
    Ground it first: a gate resting on an ungrounded claim is a feature built on
-   a false premise.
+   a false premise. The exception is a mark whose "what would settle it" is
+   this feature's own gate. Cut it if the gate states the claim as something it
+   proves, and name the mark in the report; if the gate does not, refuse and
+   name `__SPECKIT_COMMAND_EPIC_PLAN__`.
 8. **`epic.md` or `decisions.md` still holds an `f:<slug>` token.** Plan did not
    finish resolving slugs to features; `touches:` cannot be matched. Name
    `__SPECKIT_COMMAND_EPIC_PLAN__`.

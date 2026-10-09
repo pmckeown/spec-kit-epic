@@ -181,6 +181,7 @@ starting with these markers are read by the commands**, so write them exactly:
 | `ACCEPTED: <finding>, <why it stays>, by <who> <date>.` | `review`, `close` | — ; done, not owed |
 | `SKIPPED: <close step>, <why>, by <who>.` | `close` | — |
 | `CUT WITH OPEN DECISIONS: <ids>, <who> decided <date>.` | `cut` | `review`: each id still `open` is an owner's call |
+| `GATE SETTLES UNGROUNDED: <each mark, in a few words>.` | `cut` | `review`: a mark still `[UNGROUNDED]` in `epic.md` once the gate is observed is a finding |
 
 `OWED` means still to do. `ACCEPTED` means deliberately left as it is. A
 reviewer may accept only findings at or below `review.accept_max_severity`; a
@@ -269,5 +270,7 @@ Full entry and options: epics/<slug>/decisions.md
 ```
 
 An `open` entry keeps its own type in the header and says `OPEN:` in the body.
+A `provisional` entry uses its type's shape and starts the body with
+`PROVISIONAL:`.
 
 One line plus the pointer, never the argument.

@@ -69,8 +69,10 @@ names a way to continue, follow it instead.
    Ground it first: a gate resting on an ungrounded claim is a feature built on
    a false premise. The exception is a mark whose "what would settle it" is
    this feature's own gate. Cut it if the gate states the claim as something it
-   proves, and name the mark in the report; if the gate does not, refuse and
-   name `__SPECKIT_COMMAND_EPIC_PLAN__`.
+   proves, record a `GATE SETTLES UNGROUNDED` line in the feature's
+   `status_note` in step 7 (markers in `FORMATS.md`), and name the mark in the
+   report; if the gate does not, refuse and name
+   `__SPECKIT_COMMAND_EPIC_PLAN__`.
 8. **`epic.md` or `decisions.md` still holds an `f:<slug>` token.** Plan did not
    finish resolving slugs to features; `touches:` cannot be matched. Name
    `__SPECKIT_COMMAND_EPIC_PLAN__`.
@@ -91,7 +93,10 @@ names a way to continue, follow it instead.
     feature's `status_note` in step 7 (markers in `FORMATS.md`), and say so in
     the report. Core `specify` will then likely ask clarification questions
     about the same points: answer each by pointing to its `open` entry, and do
-    not settle it in the spec; the decision belongs in the ledger. A
+    not settle it in the spec; the decision belongs in the ledger. Core
+    `specify` allows only a few clarification markers and guesses past them.
+    For an `open` entry beyond that limit, cite the entry in the requirement
+    text instead of guessing. A
     `provisional` entry does not block: name it in the report.
 
 ## Steps
@@ -144,9 +149,10 @@ ordinary name, so that no core command has to be taught about it:
   any local or remote branch, found the same way as in step 1: a feature cut in
   parallel holds a number the target cannot see yet. This is a request: step 4
   records what core `specify` actually created.
-- **Branch:** the directory name, with the project's branch prefix if it uses
-  one. Follow what the repository's existing branches do; do not invent a
-  convention.
+- **Branch:** the directory name, named the way this epic's earlier cuts were
+  (their `branch:` in the register), with any prefix they use. For the epic's
+  first cut, follow the project's most recent feature branches. Do not invent
+  a convention.
 
 Check out `target:` and create the feature branch from its tip, **unless** the
 project registers a `before_specify` hook that creates branches (check
@@ -204,7 +210,7 @@ at feature level.
 
 For a `deferral`, carry the **reviving condition** rather than the refusal. That
 distinction is why the ledger has two types. Every type, including an `open`
-entry, has its pointer shape in `FORMATS.md`.
+or `provisional` entry, has its pointer shape in `FORMATS.md`.
 
 If the project's own feature-level decision log already lives somewhere else,
 put the section there instead and say where.

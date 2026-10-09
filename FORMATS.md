@@ -61,6 +61,11 @@ owes:       —
   `epics/*/epic.yml`.
 - A `refusal` names the proof that killed the alternative. A `deferral` names the
   condition that would revive it.
+- An `open` entry is a question still waiting for a decision. Its prose lists
+  the options with a recommendation, and `by:` names who must decide; it has no
+  rejected alternative yet. The answer is a new entry that supersedes it and
+  carries the chosen option and the rejected alternative like any other
+  decision. `epic.cut` refuses a feature that an `open` entry `touches:`.
 - `touches:` is the **only** record of the feature↔decision edge. `f:<slug>`
   before plan, `F<n>` after. A decision touching one feature is reported by
   `epic.plan`, not refused.

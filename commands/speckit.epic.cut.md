@@ -77,6 +77,13 @@ The file shapes are in `.specify/extensions/epic/FORMATS.md`.
    Other dirty files under `epics/` or `specs/` belong to other work: leave them
    alone, name them in the report, and offer to stash them if switching to
    `target:` would fail.
+10. **A ledger entry that `touches:` this feature is still `open`.** The feature
+    would be specified around a question nobody has answered. List each entry
+    with its options and recommendation, and ask the owner to decide it first,
+    as a new entry that supersedes it (see `open` in `FORMATS.md`). If the owner
+    chooses to cut anyway, record that in the feature's `status_note` with who
+    decided and when, and say so in the report. A `provisional` entry does not
+    block: name it in the report.
 
 ## Steps
 
@@ -214,6 +221,8 @@ next cut that depends on this feature refuses without both.
 - [ ] `target:` exists and holds `epics/<slug>/`; if this command created it,
       the report says so
 - [ ] The feature branch's parent is the target's tip
+- [ ] No `open` ledger entry touches this feature, or the owner chose to cut
+      anyway and the `status_note` says so
 - [ ] `__SPECKIT_COMMAND_PLAN__` and `__SPECKIT_COMMAND_TASKS__` were NOT run
 - [ ] The register's `feature:` is the directory core `specify` created
 - [ ] `spec.md` cites `EF` ids and restates no fact, and nothing else in it was changed
